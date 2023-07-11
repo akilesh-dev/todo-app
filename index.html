@@ -3,18 +3,35 @@
     <head>
         <title> Todo List </title>
         <link rel="stylesheet" href="styles/todo-list-final-version.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     </head>
 
     <body>  
-        <p>Todo List</p>
-        <input class="todo-name " type="text" placeholder="todo name">
-        <input class="todo-date" type="date">
-        <button class="todo-button" onclick="addTodo();">Add</button>
-        <button class="reset-button" onclick="resetList();"> Reset List</button>
+        <div class="todo-heading">
+            
+            <div class="todo-heading-text"> Todo List </div>
+            <button class="dark-mode-button" onclick="handleDarkMode();"> <img src="images/dark-mode-icon.png" class="dark-mode-img"alt="dark-mode-icon"> </button>
+        
+        </div>
+
+        
+        <div class="todo-menu">
+            <input class="todo-name" type="text" placeholder="Task to do">
+            <input class="todo-date" type="text" placeholder="Enter due date" onmouseover="
+                this.type = 'date';
+            " onmouseleave="this.type = 'text'">
+            <button class="todo-button" onclick="addTodo();">Add</button>
+        </div>
+
         <div class="todo-list">
             
         </div>
-        
+
+        <div class="div-delete-button"> </div>
+
+
     </body>
 
     <script src="scripts/todo-list-final-version.js"> </script>

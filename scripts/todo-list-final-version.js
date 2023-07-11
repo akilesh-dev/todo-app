@@ -22,18 +22,20 @@ function resetList(){
     localStorage.removeItem('list');
     const todoList = document.querySelector('.todo-list');
     todoList.innerHTML = '';
+    displayResetButton();
 }
 function displayTodoList(){
+    displayResetButton();
     const todoList = document.querySelector('.todo-list');
     let todoListNew = ''
     for(let i = 0; i<list.length;i++){
         todoListNew = todoListNew + `
-            <p> ${list[i].name} ${list[i].date} <button
-            class="delete-button" onclick="deleteItem(${i});"> Delete </button> </p> 
+            <div class="div-name"> ${list[i].name} </div> <div class="div-date"> ${list[i].date} </div> <button
+            class="delete-button" onclick="deleteItem(${i});"> Delete </button> 
         `;
     }
     todoList.innerHTML = todoListNew;
-    console.log(localStorage.getItem('list'));
+   // console.log(localStorage.getItem('list'));
 }
 
 function deleteItem(itemNumber){
@@ -41,4 +43,26 @@ function deleteItem(itemNumber){
     localStorage.setItem('list', JSON.stringify(list));
     displayTodoList();
     
+}
+
+function displayResetButton(){
+    const deleteButton = document.querySelector('.div-delete-button');
+    
+    if(list.length>0){
+        deleteButton.innerHTML = `<button class="reset-button" onclick="resetList();"> Reset List</button>`;
+    }
+    else{
+        deleteButton.innerHTML = '';
+    }
+    //console.log(deleteButton.innerHTML);
+}
+
+function handleDarkMode(){
+    const bodyElement = document.querySelector('body');
+    if(bodyElement.classList.contains('js-dark-mode')){
+        bodyElement.classList.remove('js-dark-mode');
+    }
+    else{
+        bodyElement.classList.add('js-dark-mode');
+    }
 }
